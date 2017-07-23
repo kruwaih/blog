@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create Page</title>
+
+	<style>
+		
+
+	</style>
+</head>
+
+<body>
+	<h1>{{title}}</h1>
+	<h2>{{content}}</h2>
+	<h1>user</h1>
+
+	<p>This is the Create PageThis is the Create PageThis is the Create Page</p>
+
+	<!-- create for loop so the list will be order -->
+	<ol>
+		{% for some_variable in list %} 
+		<li>{{some_variable.title}}</li>
+
+		{% endfor %}
+
+	</ol>
+<!-- create another filterd list (the code will be in the view) -->
+	<ol>
+		{% for filter_var in filter %}
+		<li>{{filter_var.title}}</li>
+
+		{% endfor %}
+	</ol>
+
+	<ol>
+		
+		<li>{{allval.title}}</li>
+		<li>{{allval.content}}</li>
+		<li>{{allval.updated}}</li>
+		<li>{{allval.timestamp}}</li>
+
+
+	</ol>
+
+	<ol>
+		<li>hi</li>
+		<li>bye</li>
+
+	</ol>
+</body>
+</html>

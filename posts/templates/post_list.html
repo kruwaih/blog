@@ -7,7 +7,7 @@
 <ol>
 
 {% for x in post_list %}
-	<a href="/posts/post_detail/{{x.id}}"><li> {{x.title}} </li></a>
+	<a href="{% url 'post_detail' post_id=x.id %}"><li> {{x.title}} </li></a>
 {% endfor %}
 </ol>
 

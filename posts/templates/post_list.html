@@ -7,7 +7,8 @@
 <ol>
 
 {% for x in post_list %}
-	<a href="{% url 'post_detail' post_id=x.id %}"><li> {{x.title}} </li></a>
+	<a href="{{x.get_absolute_url}}"><li> {{x.title}} </li></a> <!-- the posts: is from namespace in the project url -->
+<!-- 	<li>{{x}}</li> we use this one if we want to output the defult value the def __str__ in the model--> 
 {% endfor %}
 </ol>
 

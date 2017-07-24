@@ -9,13 +9,13 @@
 
 
 		<li>
-		{{instance.title}}
-		{{instance.title}}
-		{{instance.content}}
+		{{instance.title}}<br>
+		{{instance.id}}<br>
+		{{instance.content}}<br>
 		</li>
 	
 </ol>
 
-<a href="{% url 'post_list' %}"> Go Back to List</a>
+<a href="{% url 'posts:post_list' %}"> Go Back to List</a>
 </body>
 </html>

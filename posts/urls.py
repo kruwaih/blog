@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^post_list/$', views.post_list, name = 'post_list'),
     # url(r'^detail/$', views.post_detail, name = 'detail'),
     url(r'^post_detail/(?P<post_id>\d+)/$', views.post_detail, name='post_detail'),
+     url(r'^post_create/$', views.post_create, name = 'post_create'),
     
 ]

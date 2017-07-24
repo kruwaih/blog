@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Post
 from django.shortcuts import get_object_or_404
+from .forms import PostForm
 
 def post_create(request): #what will be contain when i open 127.0.0.1:8000/home   check the urls tab
 	post_list = Post.objects.all() #check line 13 we call all the object and add it in the html create file
@@ -54,3 +55,11 @@ def	post_delete(request):
 
 # def post_anythimg (request):
 # 	return rendur (request, anything.html, {}) to create html file
+
+def post_create(request):
+	form = PostForm()
+	context = {
+		'form':form,
+
+	}
+	return render(request, 'post_create.html', context)

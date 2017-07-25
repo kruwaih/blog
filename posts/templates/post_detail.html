@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>list detail</title>
+{% extends 'base.html' %}
 
-</head>
-<body>
+
+{% block head_title %}Detail{% endblock head_title %}
+
+{% block content %}
 <ol>
 
 
@@ -17,5 +16,4 @@
 </ol>
 
 <a href="{% url 'posts:list' %}"> Go Back to List</a>
-</body>
-</html>
+{% endblock content %}

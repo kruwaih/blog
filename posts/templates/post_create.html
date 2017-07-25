@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>create form</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block head_title %}Create{% endblock head_title %}
+{% block content %}
 	<form method="POST" action="{% url 'posts:create' %}"> <!-- dont use csrf for GET and use it only on POST this is for security perpos -->
 		{% csrf_token %}
 		{{form.as_p}}
 		<input type='submit' value='create post'> <!-- we use type for the forms and when we use submit that meat create a bottom and the value is the caption for the bottom -->
-	</form>
-</body>
-</html>
+{% endblock content %}

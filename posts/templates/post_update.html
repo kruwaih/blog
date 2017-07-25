@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update</title>
+</head>
+<body>
+		<form method="POST" action="{% url 'posts:update' post_id=post_object.id %}"> <!-- dont use csrf for GET and use it only on POST this is for security perpos -->
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type='submit' value='update'>
+
+</body>
+</html>

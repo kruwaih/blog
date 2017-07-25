@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
 	<title>
@@ -8,6 +9,7 @@
 
 
 	</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.main.css' %}">
 </head>
 <body>
 {% include 'messages.html' %}
@@ -16,6 +18,9 @@
 
 
 {% endblock content %}
+
+<script src="{% static 'js/jquery-3.2.1.main.js' %}"></script>
+<script src="{% static 'js/bootstrap.main.js' %}"></script>
 
 
 </body>

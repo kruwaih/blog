@@ -3,12 +3,26 @@
 {% block head_title %}List{% endblock head_title %}
 
 {% block content %}
-	
 
-<ol>
+	<div class="row">
+	{% for x in post_list %}
+		<div class="col-sm-6">
+			<div class="thumbnail">
+    		  {# <img src="..." alt="..."> #}
+      			<div class="caption">
+       			 <h3>{{x.title}}<small>{{x.timestamp|timesince}} ago</small></h3>
+      			  <p>{{x.content|linebreaks|truncatechars:10}}</p>
+       			  <p>	
+		        	<a href="{{x.get_absolute_url}}" class="btn btn-primary">View</a> 
+					<a href="{% url 'posts:update' post_id=x.id %}" class="btn btn-success">Edit</a> 
+					<a href="{% url 'posts:delete' post_id=x.id %}" class="btn btn-danger">Delete</a>
+        		</p>
+     			</div>
+    		</div>
+    	</div>
 
-{% for x in post_list %}
-	<a href="{{x.get_absolute_url}}"><li> {{x.title}} </li></a> <!-- the posts: is from namespace in the project url -->
+	<!-- the posts: is from namespace in the project url -->
 <!-- 	<li>{{x}}</li> we use this one if we want to output the defult value the def __str__ in the model--> 
-{% endfor %}
+	{% endfor %}
+	</div>
 {% endblock content %}

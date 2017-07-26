@@ -9,18 +9,20 @@
 
 
 	</title>
-	<link rel="stylesheet" href="{% static 'css/bootstrap.main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
 {% include 'messages.html' %}
 
+<div class="container">
 {% block content %}
 
 
 {% endblock content %}
+</div>
 
-<script src="{% static 'js/jquery-3.2.1.main.js' %}"></script>
-<script src="{% static 'js/bootstrap.main.js' %}"></script>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 
 </body>

@@ -24,7 +24,7 @@ from django.contrib import messages
 # 	return render (request, 'create.html', context)
 
 def post_list(request):
-	obj_list = Post.objects.all()
+	`obj_list = Post.objects.all() #.order_by('-timestamp', 'title') to order for certine html
 	context = {
 
 	"post_list": obj_list

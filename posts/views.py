@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from .forms import PostForm
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from urllib.parse import quote
 # def post_create(request): #what will be contain when i open 127.0.0.1:8000/home   check the urls tab
 # 	post_list = Post.objects.all() #check line 13 we call all the object and add it in the html create file
 # 	post_filter = Post.objects.filter(title__contains = 't')
@@ -40,6 +41,7 @@ def post_list(request):
 	context = {
 
 	"post_list": objs,
+
 	}
 	return render(request, "post_list.html", context)
 

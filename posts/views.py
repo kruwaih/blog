@@ -6,10 +6,11 @@ from .forms import PostForm
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from urllib.parse import quote
+from django.http import Http404
 # def post_create(request): #what will be contain when i open 127.0.0.1:8000/home   check the urls tab
 # 	post_list = Post.objects.all() #check line 13 we call all the object and add it in the html create file
 # 	post_filter = Post.objects.filter(title__contains = 't')
-# 	allvalue = Post.objects.get(id=5)
+# 	allvalue = Post.objects.get(slug=5)
 # 	context = {
 	
 # 		'title': 'post page', #check the create templets
@@ -45,9 +46,9 @@ def post_list(request):
 	}
 	return render(request, "post_list.html", context)
 
-def post_detail(request, post_id):
-	# obj = get_object_or_404(Post, id=post_id)
-	obj = Post.objects.get(id=post_id)
+def post_detail(request, slug):
+	# obj = get_object_or_404(Post, slug=slug)
+	obj = Post.objects.get(slug=slug)
 	context = {
 		'instance': obj,
 
@@ -72,6 +73,8 @@ def	post_delete(request):
 # 	return rendur (request, anything.html, {}) to create html file
 
 def post_create(request):
+	if not (request.user.is_staff or request.user.is_superuser):
+		raise Http404
 	form = PostForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
 		form.save()
@@ -84,8 +87,10 @@ def post_create(request):
 	return render(request, 'post_create.html', context)
 
 
-def post_update(request, post_id):
-	post_object = get_object_or_404(Post, id=post_id)
+def post_update(request, slug):
+	if not (request.user.is_staff or request.user.is_superuser):
+		raise Http404
+	post_object = get_object_or_404(Post, slug=slug)
 	form = PostForm(request.POST or None, request.FILES or None, instance=post_object)
 	if form.is_valid():
 		form.save()
@@ -97,7 +102,9 @@ def post_update(request, post_id):
 	}
 	return render(request, 'post_update.html', context)
 
-def post_delete(request, post_id):
-	Post.objects.get(id=post_id).delete()
+def post_delete(request, slug):
+	if not (equest.user.is_superuser):
+		raise Http404
+	Post.objects.get(slug=slug).delete()
 	messages.warning(request, "Deleted")
 	return redirect ('posts:list')

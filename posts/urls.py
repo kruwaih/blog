@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^list/$', views.post_list, name = 'list'),
     # url(r'^detail/$', views.detail, name = 'detail'),
     url(r'^detail/(?P<slug>[-\w]+)/$', views.post_detail, name='detail'),
-     url(r'^create/$', views.post_create, name = 'create'),
+    url(r'^create/$', views.post_create, name = 'create'),
+    url(r'^signup/$', views.usersignup, name = 'signup'),
+    url(r'^login/$', views.userlogin, name = 'login'),
     
 ]

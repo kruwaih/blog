@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block head_title %}Create{% endblock head_title %}
 {% block content %}
+	<div class='row'>
+		<div class='col-sm-6 col-sm-offset-3'>
 	<form method="POST" action="{% url 'posts:create' %}" enctype="multipart/form-data"> 
 		{% csrf_token %}
-		{{form.as_p}}
+		{{form|crispy}}
 		<input type='submit' value='create post'> 
+	</form>
+		</div>
+	</div>
 {% endblock content %}

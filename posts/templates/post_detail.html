@@ -26,7 +26,7 @@
 		        		<a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}">
 		        			Share on Facebook
 		        		</a>
-		        		<a href="https://twitter.com/home?status={{instance.content|urlify|truncatechars:50}}%20{{request.build_absolute_uri}}">
+		        		<a href="https://twitter.com/home?status={{instance.content|urlify|truncatechars:50}}%20{{request.build_absolute_uri}}"> <!-- request.build_absolute_uri is for redirect to the same page where you are-->
 							Share on Twitter
 						</a>
 						<a href="https://www.linkedin.com/shareArticle?mini=true&url=h{{request.build_absolute_uri}}&title={{instance.title|urlify}}&summary={{instance.content|urlify}}&source={{request.build_absolute_uri}}">
@@ -34,7 +34,7 @@
 						</a>
 	        			</div>
 		        			<div>
-		        			<button class="btn" onclick="ajax_like()">
+		        			<!--<button class="btn" onclick="ajax_like()">
 								<span id="likes_count">{{like_count}}</span>
 			        			<span id = "heart" class="glyphicon glyphicon-heart" {% if likes %}text-danger{% endif %} aria-hidden="true"></span>
 			        			
@@ -42,7 +42,9 @@
 		        			</div>
 						
 	        			</div>		
-	        			{% include "django_comments.html" %}
+	        			{% include "django_comments.html" %}-->
+
+	        			<div class="fb-comments" data-href="{{request.build_absolute_uri}}" data-numposts="5"></div>
 						
 					
 							<br>

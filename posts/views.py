@@ -1,16 +1,35 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Like
 from django.shortcuts import get_object_or_404
 from .forms import PostForm, UserSignUp, UserLogIn
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from urllib.parse import quote
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.utils import timezone
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 
+
+
+def like_button(request, post_id):
+    obj = Post.objects.get(id=post_id)
+    like, create = Like.objects.get_or_create(user=request.user, post=obj)
+
+    if create:
+        action ="like"
+    else:
+        action = "unlike"
+        like.delete()
+
+    post_like_count = obj.like_set.all().count()
+
+    context = {
+        "action": action,
+        "like_count": post_like_count,
+    }
+    return JsonResponse(context, safe=False)
 
 def usersignup(request):
     context = {}
@@ -105,8 +124,17 @@ def post_detail(request, slug):
         if not (request.user.is_staff or request.user.is_superuser):
             raise Http404
 
+    if request.user.is_authenticated():
+        if Like.objects.filter(post=obj, user=request.user).exists():
+            liked = True
+        else:
+            liked = False
+
+    post_like_count = obj.like_set.all().count() #like is the model but when we refere it to set will type it in small letter
     context = {
         'instance': obj,
+        "like": liked,
+        "likes_count": post_like_count,
 
     }
     return render(request, 'post_detail.html', context)

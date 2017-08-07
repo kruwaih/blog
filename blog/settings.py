@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'q=1n%##6lp^wh8@9ymui=d=g4xbbd2)cg!0-2mnuw$l!g92r08'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['138.197.65.29',]
+ALLOWED_HOSTS = ['138.197.65.29','127.0.0.1']
 
 
 # Application definition
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'posts',
     'crispy_forms',
     'django_comments',
+    'rest_framework',
+    'api',
 
 ]
 
@@ -82,23 +84,23 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': '35d8cebac8f3a38b66fb4327000ba2e8',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'django',
+#         'USER': 'django',
+#         'PASSWORD': '35d8cebac8f3a38b66fb4327000ba2e8',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation

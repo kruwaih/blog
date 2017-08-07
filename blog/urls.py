@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls), #when i write the admin in the url it will open the admin page
     url(r'^posts/', include('posts.urls', namespace='posts')), # to access the urls in the post      ^this is to define where the url begin	/namespace we use it if we have same url name for anothe url app
     url(r'^comments/', include('django_comments.urls')),
+    url(r'^api/', include('api.urls', namespace='api')),
 ]
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

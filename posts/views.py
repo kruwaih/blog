@@ -189,7 +189,7 @@ def post_update(request, slug):
     return render(request, 'post_update.html', context)
 
 def post_delete(request, slug):
-    if not (equest.user.is_superuser):
+    if not (request.user.is_superuser):
         raise Http404
     Post.objects.get(slug=slug).delete()
     messages.warning(request, "Deleted")

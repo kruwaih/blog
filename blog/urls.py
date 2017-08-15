@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^posts/', include('posts.urls', namespace='posts')), # to access the urls in the post      ^this is to define where the url begin	/namespace we use it if we have same url name for anothe url app
     url(r'^comments/', include('django_comments.urls')),
     url(r'^api/', include('api.urls', namespace='api')),
+    url(r'^googleApp/', include('googleApp.urls', namespace='googleApp')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

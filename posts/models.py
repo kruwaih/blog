@@ -3,6 +3,8 @@ from django.core.urlresolvers import reverse
 from django.db.models.signals import post_save
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+
+
 class Post(models.Model):
 	author = models.ForeignKey(User, default=1) #when there is foreign key that mean many objects to one user
 	title = models.CharField(max_length=50)

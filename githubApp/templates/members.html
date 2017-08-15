@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+			<table class='table'>
+			{% for result in response %}
+				<tr>
+					<td>{{result.login}}</td>
+					<td>ID: {{result.id}}</td>
+					<td>URL: {{result.url }}</td> 
+					<!--<img src="{{result.avatar_url}}" alt="" class="img img-responsive">-->
+				</tr>
+			{%endfor%}
+		</table>
+{% endblock content %}

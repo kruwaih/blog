@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'googleApp',
+    'githubApp',
+    'twitterApp',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -152,6 +154,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ],
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

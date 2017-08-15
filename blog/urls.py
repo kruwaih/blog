@@ -11,6 +11,8 @@ urlpatterns = [
     url(r'^comments/', include('django_comments.urls')),
     url(r'^api/', include('api.urls', namespace='api')),
     url(r'^googleApp/', include('googleApp.urls', namespace='googleApp')),
+    url(r'^githubApp/', include('githubApp.urls')),
+    url(r'^twitterApp/', include('twitterApp.urls')),
     url(r'^accounts/', include('allauth.urls')),
 ]
 if settings.DEBUG:
